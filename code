@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Biometria</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+function getParameterByName(name) {
+	const urlParams = new URLSearchParams(window.location.search);
+	return urlParams.get(name);
+}
+
+function callValidateUser(isOk){
+	var user = '';
+	var password = '';
+	if (isOk){
+		user = 'user1';
+		password = '1234';
+	}else{
+		user = 'user2';
+		password = '1234';
+	}
+	
+	
+	//const data = "esto es un body de ejemplo";
+	fetch('http://localhost:8080/twitch/prueba', {
+		   method: 'POST',
+		   headers: {
+			      'Accept': 'application/json',
+			      'Content-Type': 'application/json'
+			    },
+		   body: JSON.stringify({user:user,password:password}) // body: JSON.stringify({a: 1, b: 'Textual content'})
+		})
+		.then(function(response) {
+		   if(response.ok) {
+		       return response.json()
+		   } else {
+		       throw "Error en la llamada Ajax";
+		   }
+
+		})
+		.then(function(response) {
+		   console.log(response._id);
+		   console.log(response.game);
+		   var queryParam = getParameterByName('ejQuery'); // 
+		   alert(queryParam);
+		   //CallRedirect
+		})
+		.catch(function(err) {
+		   console.log(err);
+		});
+		
+	
+}
+
+</script>
+
+
+</head>
+<body>
+
+<input class="btn btn-primary" type="submit" value="Submit" onClick="callValidateUser(true)">
+
+
+
+</body>
+</html>
