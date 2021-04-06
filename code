@@ -9,7 +9,7 @@
                     "caso_prueba": [
                         {
                             "id_prueba": "PS001",
-                            "aplica": true,
+                            "requerida": true,
                             "descripcion": "Se crea el pago y se hace SCA desacoplado.",
                             "prerrequisitos": [
                                 {
