@@ -1,0 +1,104 @@
+{
+    "version": "",
+    "funcionality": [
+        {
+            "funcionalityName": "",
+            "funcionalityDescription": "",
+            "additionalInformation": "",
+            //Inicio array pruebas
+            "test": [
+                //Inicio prueba
+                {
+                    "id": "",
+                    "description": "",
+                    "prerrequisites": "",
+                    "additionalInformation": "",
+                    "mandatory": "",
+                    "step": [
+                        {
+                            "name": "",
+                            "description": ""
+                        }
+                    ],
+                    "evidence": [
+                        {
+                            "requestType": "",
+                            "operationId": true,
+                            "resourceId": true,
+                            "authorisationId": true,
+                            "additionalInformation": ""
+                        }
+                    ]
+                }
+                //Fin prueba
+            ]
+            //Fin array pruebas funcionalidad
+        }
+    ]
+}
+
+
+
+{
+    "idEntidad": "",
+    "funcionality": "",
+    "test": [
+        {
+            "id": "",
+            "comments":"",
+            "evidences": [
+                {
+                    "requestType": "",
+                    "operationId": "",
+                    "resourceId": "",
+                    "authorisationId": "",
+                    "additionalInformation": ""
+                }
+            ]
+        }
+    ]
+}
+
+
+********* PMV ***********
+Excel -> JSON
+
+TPP-SIM-FRONT
+    - Nuevas pantalla/s front
+
+TPP-SIM-BACK
+    - Documentacion DT/MD
+    - Definir servicio /certificacion/{version}
+    - Definir servicio /certificacion/test
+    - Definir modelo de datos front/back
+        * Datos certificacion
+        * Datos evidencias
+
+
+VENUS FRONT
+    - Pantalla de edición de pruebas:
+        *Que muestre:
+            - Entidad, Funcionalidad, ID Prueba, Evidencias, Comentarios entidad, Fecha envio, Estado
+        *Que permita añadir/editar/ver:
+            - Comentario redsys, estado prueba, descripcion_prueba
+
+VENUS BACK
+
+    - Consulta de pruebas
+    - Actualización estado prueba
+
+
+******** Mejoras *********
+TPP-SIM-FRONT
+- Filtro pruebas según la entidad.
+- Consulta del estado de la certificacion para la entidad.
+
+TPP-SIM-BACK
+- Evolucion servicios para filtrar por entidad
+
+VENUS FRONT
+    - Pantalla de consulta/resumen de una determinada versión de certificación.
+    - Pantalla de creación/edición de certificaciones.
+
+VENUS BACK
+- Comunicación con ITS para revisión automatica de las pruebas
