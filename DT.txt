@@ -1,0 +1,100 @@
+TIPOS DATOS JAVA
+
+===============================================================================
+GET 	{aspsp}/services
+
+	Request
+		--
+	Response
+		Body: 
+			List<Service> serviceList; -> Listado de servicios 
+		
+	---------------------------------------------------------------------------
+	+Service
+		String serviceName;
+		List<String> funcionalityId;
+===============================================================================
+===============================================================================
+POST	{aspsp}/get/list-test		?startAt=0&limit=5
+
+	Request
+		Body:
+			List<String> funcionalityId;
+			
+	Response
+		Body:
+			List<Test> testList;
+			Integer testNumber;* (No necesario porque se puede calcular con testList)
+			
+				*Ej: testNumber = 12 & limit=5
+					pag 1-> {aspsp}/get/list-test?limit=5&startAt=0
+					pag 2-> {aspsp}/get/list-test?limit=5&startAt=5
+					pag 3-> {aspsp}/get/list-test?limit=5&startAt=10
+	---------------------------------------------------------------------------
+	+Test
+		String testId;
+		String funcionalityName;
+		String state;
+		String description;
+		String prerrequisites;
+		String additionalInformation;
+		List<Step> stepList;
+		Boolean mandatory;
+		Date aspspSubmitDate;
+		Date lastRevisionDate;
+		List<Revision> revisionList;
+		
+	+Revision
+		String revisionComment;
+		String aspspComment;
+		String state;
+		Date aspspSubmitDate;
+		Date revisionDate;
+		List<Evidence> evidenceList;
+		
+	+Evidence
+		String xRequestId;
+		String resourceId;
+		String authorisationId;
+		String additionalInformation;
+		
+	+Step
+		String name;
+		String description;
+		String evidenceType;
+		ExpectedResponseCode expectedResponseCode;
+		
+	+ExpectedResponseCode
+		Integer httpCode;
+		String messageCode;
+		String additionalInformation;
+		
+===============================================================================
+===============================================================================
+POST 	{aspsp}/test
+
+	Request
+		Body:
+			String testId;
+			String funcionalityId;
+			String aspspComment;
+			List<Evidence> evidenceList;
+	
+	Response
+		Body:
+			Boolean success;
+			String error;
+			String additionalInformation;
+
+===============================================================================
+===============================================================================
+===============================================================================
+
+ESTADOS PRUEBA
+
+0 - SIN_ENVIAR
+1 - ENVIADA
+2 - EN_REVISION
+3 - PENDIENTE_CORRECION_ASPSP
+4 - PENDIENTE_ACLARACION_ASPSP
+5 - CORRECTA
